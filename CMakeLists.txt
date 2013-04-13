@@ -17,7 +17,7 @@ ADD_DEFINITIONS(-s -O3 )
 
 #create the executable
 SET(EXEC demo4.x)
-ADD_EXECUTABLE(${EXEC} main.cpp glutwidget.cpp shader_utils.cpp cube.cpp)
+ADD_EXECUTABLE(${EXEC} main.cpp glutwidget.cpp shader_utils.cpp)
 
 TARGET_LINK_LIBRARIES (${EXEC}
    ${OPENGL_gl_LIBRARY}

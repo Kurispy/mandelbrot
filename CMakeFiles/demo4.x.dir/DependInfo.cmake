@@ -4,7 +4,6 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/chris/Desktop/ecs175/mandelbrot/cube.cpp" "/home/chris/Desktop/ecs175/mandelbrot/CMakeFiles/demo4.x.dir/cube.cpp.o"
   "/home/chris/Desktop/ecs175/mandelbrot/glutwidget.cpp" "/home/chris/Desktop/ecs175/mandelbrot/CMakeFiles/demo4.x.dir/glutwidget.cpp.o"
   "/home/chris/Desktop/ecs175/mandelbrot/main.cpp" "/home/chris/Desktop/ecs175/mandelbrot/CMakeFiles/demo4.x.dir/main.cpp.o"
   "/home/chris/Desktop/ecs175/mandelbrot/shader_utils.cpp" "/home/chris/Desktop/ecs175/mandelbrot/CMakeFiles/demo4.x.dir/shader_utils.cpp.o"

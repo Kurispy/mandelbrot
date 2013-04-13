@@ -115,35 +115,11 @@ CMakeFiles/demo4.x.dir/shader_utils.cpp.o.provides: CMakeFiles/demo4.x.dir/shade
 
 CMakeFiles/demo4.x.dir/shader_utils.cpp.o.provides.build: CMakeFiles/demo4.x.dir/shader_utils.cpp.o
 
-CMakeFiles/demo4.x.dir/cube.cpp.o: CMakeFiles/demo4.x.dir/flags.make
-CMakeFiles/demo4.x.dir/cube.cpp.o: cube.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/Desktop/ecs175/mandelbrot/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/demo4.x.dir/cube.cpp.o"
-	/usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/demo4.x.dir/cube.cpp.o -c /home/chris/Desktop/ecs175/mandelbrot/cube.cpp
-
-CMakeFiles/demo4.x.dir/cube.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo4.x.dir/cube.cpp.i"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/chris/Desktop/ecs175/mandelbrot/cube.cpp > CMakeFiles/demo4.x.dir/cube.cpp.i
-
-CMakeFiles/demo4.x.dir/cube.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo4.x.dir/cube.cpp.s"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/chris/Desktop/ecs175/mandelbrot/cube.cpp -o CMakeFiles/demo4.x.dir/cube.cpp.s
-
-CMakeFiles/demo4.x.dir/cube.cpp.o.requires:
-.PHONY : CMakeFiles/demo4.x.dir/cube.cpp.o.requires
-
-CMakeFiles/demo4.x.dir/cube.cpp.o.provides: CMakeFiles/demo4.x.dir/cube.cpp.o.requires
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/cube.cpp.o.provides.build
-.PHONY : CMakeFiles/demo4.x.dir/cube.cpp.o.provides
-
-CMakeFiles/demo4.x.dir/cube.cpp.o.provides.build: CMakeFiles/demo4.x.dir/cube.cpp.o
-
 # Object files for target demo4.x
 demo4_x_OBJECTS = \
 "CMakeFiles/demo4.x.dir/main.cpp.o" \
 "CMakeFiles/demo4.x.dir/glutwidget.cpp.o" \
-"CMakeFiles/demo4.x.dir/shader_utils.cpp.o" \
-"CMakeFiles/demo4.x.dir/cube.cpp.o"
+"CMakeFiles/demo4.x.dir/shader_utils.cpp.o"
 
 # External object files for target demo4.x
 demo4_x_EXTERNAL_OBJECTS =
@@ -151,7 +127,6 @@ demo4_x_EXTERNAL_OBJECTS =
 demo4.x: CMakeFiles/demo4.x.dir/main.cpp.o
 demo4.x: CMakeFiles/demo4.x.dir/glutwidget.cpp.o
 demo4.x: CMakeFiles/demo4.x.dir/shader_utils.cpp.o
-demo4.x: CMakeFiles/demo4.x.dir/cube.cpp.o
 demo4.x: /usr/lib/x86_64-linux-gnu/libGL.so
 demo4.x: /usr/lib/x86_64-linux-gnu/libGLU.so
 demo4.x: /usr/lib/x86_64-linux-gnu/libglut.so
@@ -170,7 +145,6 @@ CMakeFiles/demo4.x.dir/build: demo4.x
 CMakeFiles/demo4.x.dir/requires: CMakeFiles/demo4.x.dir/main.cpp.o.requires
 CMakeFiles/demo4.x.dir/requires: CMakeFiles/demo4.x.dir/glutwidget.cpp.o.requires
 CMakeFiles/demo4.x.dir/requires: CMakeFiles/demo4.x.dir/shader_utils.cpp.o.requires
-CMakeFiles/demo4.x.dir/requires: CMakeFiles/demo4.x.dir/cube.cpp.o.requires
 .PHONY : CMakeFiles/demo4.x.dir/requires
 
 CMakeFiles/demo4.x.dir/clean:

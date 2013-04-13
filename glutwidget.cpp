@@ -5,7 +5,6 @@
 
 #include "glutwidget.hpp"
 #include "shader_utils.hpp"
-#include "cube.hpp"
 #include <iostream>
 
 int glutWidget::m_pos_attribute_location;    
@@ -102,68 +101,6 @@ void glutWidget::initOpenGL()
     
     makeShaders();          //load data of fragment and vertex programs/shaders - compile shaders
     
-    c = &Cube::init(m_pos_attribute_location,m_normal_attribute_location);      //create cube vertex buffer object (VBO)
-}
-
-
-
-/*
- Draws four cubes.
- Draws cubes using VBOs (replaces old glBegin/glEnd calls)
- */
-void glutWidget::drawCubes()
-{
-    glUseProgram(m_program);        //enable use of vertex and fragment shader (we are now using programmable parts of pipeline)
-                                    //try opening the shader code in the "shaders" subfolder with a texteditor to see what they do
-                                    //the vertex shader will operate an all vertices that are passed to the GPU in the following
-                                    //the fragment shader wil operate on all fragments covered by the following geometry
-    
-    glRotated(m_frame/100,1,1,1);   //add a rotation to MODELVIEW MATRIX
-    
-    glPushMatrix();
-    glTranslated(0.5,0.5,0.5);      
-    c->drawCube();
-    glPopMatrix();
-    
-    glPushMatrix();
-    glTranslated(-1.5,-1.5,-1.5);
-    c->drawCube();
-    glPopMatrix();
-    
-    glPushMatrix();
-    glTranslated(-1.5,0.5,-1.5);
-    c->drawCube();
-    glPopMatrix();
-    
-    glPushMatrix();
-    glTranslated(-1.5,0.5,0.5);
-    c->drawCube();
-    glPopMatrix();
-
-    
-    glPushMatrix();
-    glTranslated(0.5,-1.5,0.5);
-    c->drawCube();
-    glPopMatrix();
-    
-    glPushMatrix();
-    glTranslated(0.5,-1.5,-1.5);
-    c->drawCube();
-    glPopMatrix();
-    
-    glPushMatrix();
-    glTranslated(0.5,0.5,-1.5);
-    c->drawCube();
-    glPopMatrix();
-    
-    glPushMatrix();
-    glTranslated(-1.5,-1.5,0.5);
-    c->drawCube();
-    glPopMatrix();
-    
-    glUseProgram(0);    //disable use of shader
-    
-       
 }
 
 
@@ -173,20 +110,10 @@ void glutWidget::drawCubes()
 void glutWidget::render()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     //clears color and depth bits of framebuffer
-    
-//    glMatrixMode(GL_PROJECTION);       
-//    glLoadIdentity();                                             //initializes projection matrix with identity
-//    gluPerspective(60,(float)m_width/(float)m_height,0.1,100);  //set up projection mode (field of view, aspect ratio, near and far clipping plane)
-//    
-//    glMatrixMode(GL_MODELVIEW);
-//    glLoadIdentity();                       //initializes modelview matrix with identity
-//    gluLookAt(0,0,10,0,0,0,0,1,0);          //set up camera position and orientation
 
     
     setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy);
     setUniform1f(m_program, "scale", glutWidget::scale);
-    
-    //drawCubes();
     
     glUseProgram(m_program);
     

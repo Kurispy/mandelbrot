@@ -108,30 +108,6 @@ demo4.x/fast:
 	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/build
 .PHONY : demo4.x/fast
 
-cube.o: cube.cpp.o
-.PHONY : cube.o
-
-# target to build an object file
-cube.cpp.o:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/cube.cpp.o
-.PHONY : cube.cpp.o
-
-cube.i: cube.cpp.i
-.PHONY : cube.i
-
-# target to preprocess a source file
-cube.cpp.i:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/cube.cpp.i
-.PHONY : cube.cpp.i
-
-cube.s: cube.cpp.s
-.PHONY : cube.s
-
-# target to generate assembly for a file
-cube.cpp.s:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/cube.cpp.s
-.PHONY : cube.cpp.s
-
 glutwidget.o: glutwidget.cpp.o
 .PHONY : glutwidget.o
 
@@ -213,9 +189,6 @@ help:
 	@echo "... demo4.x"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... cube.o"
-	@echo "... cube.i"
-	@echo "... cube.s"
 	@echo "... glutwidget.o"
 	@echo "... glutwidget.i"
 	@echo "... glutwidget.s"
