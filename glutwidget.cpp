@@ -7,14 +7,10 @@
 #include "shader_utils.hpp"
 #include <iostream>
 
-int glutWidget::m_pos_attribute_location;    
-int glutWidget::m_normal_attribute_location;
 unsigned int glutWidget::m_frame;
 unsigned int glutWidget::m_program;               
-unsigned int glutWidget::m_vertexsh;
 unsigned int glutWidget::m_fragmentsh;  
-Cube *glutWidget::c;
-float glutWidget::cx = 0.7, glutWidget::cy = 0.0;
+float glutWidget::cx = 0.0, glutWidget::cy = 0.0;
 float glutWidget::scale = 2.2;
 int glutWidget::itr = 70;
 const float glutWidget::zoom_factor = 0.025;
@@ -100,6 +96,10 @@ void glutWidget::initOpenGL()
     
     
     makeShaders();          //load data of fragment and vertex programs/shaders - compile shaders
+    glUseProgram(m_program); //Enables fragment shader
+    
+    setUniform1i(m_program, "itr", itr);
+    
     
 }
 
@@ -115,7 +115,7 @@ void glutWidget::render()
     setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy);
     setUniform1f(m_program, "scale", glutWidget::scale);
     
-    glUseProgram(m_program);
+    
     
     glBegin(GL_QUADS);
     glVertex3f(-1, -1, 0);
@@ -123,8 +123,6 @@ void glutWidget::render()
     glVertex3f(1, 1, 0);
     glVertex3f(-1, 1, 0);
     glEnd();
-    
-    glUseProgram(0);
     
     
    
@@ -179,11 +177,9 @@ void glutWidget::specialKeyUp(int key, int, int)
 void glutWidget::stop()
 {
     //clean up shaders
-    glDetachShader(m_program,m_vertexsh);
-	glDetachShader(m_program,m_fragmentsh);
+        glDetachShader(m_program,m_fragmentsh);
     
-    glDeleteProgram(m_program);
-	glDeleteShader(m_vertexsh);
+        glDeleteProgram(m_program);
 	glDeleteShader(m_fragmentsh);
     
     exit(0);
@@ -195,32 +191,18 @@ void glutWidget::stop()
 void glutWidget::makeShaders()
 {
     m_program = glCreateProgram();
-	
-	//char *shadercode = readShader("shaders/vertexshader.vert");	//reads shader code (you can edit shader code with a text editor)
-    //m_vertexsh = glCreateShader(GL_VERTEX_SHADER_ARB);
-    //glShaderSource(m_vertexsh, 1, (const GLcharARB **)&shadercode,NULL);
-    //delete[] shadercode;
-    //glCompileShader(m_vertexsh);    //compiles shader
-    //printInfoLog(m_vertexsh);       //prints errors during shader compilation
-    
-    
+
 	char *shadercode = readShader("shaders/fragmentshader.frag");     //reads shader code (you can edit shader code with a text editor)
-    m_fragmentsh = glCreateShader(GL_FRAGMENT_SHADER_ARB);
+        m_fragmentsh = glCreateShader(GL_FRAGMENT_SHADER_ARB);
 	glShaderSource(m_fragmentsh, 1, (const GLcharARB **)&shadercode,NULL);
 	delete[] shadercode;
 	glCompileShader(m_fragmentsh);  //compiles shader
 	printInfoLog(m_fragmentsh);     //prints errors during shader compilation
     
-	glAttachShader(m_program,m_vertexsh);
 	glAttachShader(m_program,m_fragmentsh);
 
 	glLinkProgram(m_program);   //compiles fragment and vertex shader into a shader program
 	printInfoLog(m_program);    //prints errors during program compilation
-    
-    //glUseProgram(m_program);
-    //m_pos_attribute_location = glGetAttribLocation(m_program,"in_Position");  //get pointer to "in_Position" attribute of vertex shader
-    //m_normal_attribute_location = glGetAttribLocation(m_program,"in_Normal"); //get pointer to "in_Normal" attribute of vertex shader
-    //glUseProgram(0);
 }
 
 
@@ -242,6 +224,8 @@ void glutWidget::update()
 {
     m_frame++;
     glutPostRedisplay(); //marks window for redrawing
+    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy);
+    setUniform1f(m_program, "scale", glutWidget::scale);
 }
 
 
