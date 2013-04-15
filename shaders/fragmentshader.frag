@@ -5,8 +5,8 @@ uniform int itr;
 void main() {
     vec2 z, c;
 
-    c.x = (gl_FragCoord.x - 0.5);
-    c.y = (gl_FragCoord.y - 0.5);
+    c.x = (gl_TexCoord[0].x - 0.5) * scale - center.x;
+    c.y = (gl_TexCoord[0].y - 0.5) * scale - center.y;
 
     int i;
     z = c;
@@ -19,5 +19,5 @@ void main() {
         z.y = y;
     }
 
-    gl_FragColor = vec4(0.0, 0.0, (gl_FragCoord.x - 0.5)/500, 1.0);
+    gl_FragColor = vec4(0.0, (i == itr ? 0.0 : float(i)) / 25.0, (i == itr ? 0.0 : float(i)) / 25.0, 1.0);
 }

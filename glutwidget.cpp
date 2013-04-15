@@ -10,10 +10,10 @@
 unsigned int glutWidget::m_frame;
 unsigned int glutWidget::m_program;               
 unsigned int glutWidget::m_fragmentsh;  
-float glutWidget::cx = 0.0, glutWidget::cy = 0.0;
-float glutWidget::scale = 2.2;
+float glutWidget::cx = 0.7, glutWidget::cy = 0.0;
+float glutWidget::scale = 3.0;
 int glutWidget::itr = 70;
-const float glutWidget::zoom_factor = 0.025;
+const float glutWidget::zoom_factor = 0.1;
 
 
 /*
@@ -26,9 +26,7 @@ glutWidget::glutWidget(int argc, char** argv)
     glutInit(&argc,argv);
     glutInitDisplayString("samples rgb double depth");
     glutCreateWindow("Mandelbrot");
-    
-    //Maybe scroll wheel zoom?
-    
+    glutMouseFunc(mouseHandler);     //what to call when user clicks or scrolls
     glutKeyboardFunc(keyDown);       //what to call when user presses a key
     glutKeyboardUpFunc(keyUp);       //what to call when user releases a key
     glutSpecialFunc(specialKeyDown); //what to call when user presses a special key
@@ -118,15 +116,57 @@ void glutWidget::render()
     
     
     glBegin(GL_QUADS);
-    glVertex3f(-1, -1, 0);
-    glVertex3f(1, -1, 0);
-    glVertex3f(1, 1, 0);
-    glVertex3f(-1, 1, 0);
+    glTexCoord2f(0, 0);
+    glVertex2f(-1, -1);
+    glTexCoord2f(1, 0);
+    glVertex2f(1, -1);
+    glTexCoord2f(1, 1);
+    glVertex2f(1, 1);
+    glTexCoord2f(0, 1);
+    glVertex2f(-1, 1);
     glEnd();
     
     
    
     glutSwapBuffers();  //swaps front and back buffer for double buffering
+}
+
+
+/*
+ Handles user event: a mouse button was pressed
+ */
+void glutWidget::mouseHandler(int button, int state, int x, int y)
+{
+    if (state == GLUT_UP)
+        return;
+    
+    int w = glutGet(GLUT_WINDOW_WIDTH);
+    int h = glutGet(GLUT_WINDOW_HEIGHT);
+    float zscale = (1 / zoom_factor);
+    
+    //Get distance from center
+    float dx = (((float) x / (float) w) - 0.5);
+    float dy = (((float) y / (float) h) - 0.5);
+    
+    switch(button)
+    {
+        case 0: //Left click
+            
+            break;
+        case 2: //Right click
+            
+            break;
+        case 3: //Scroll up
+            scale *= 1 - zoom_factor;
+            cx -= (dx * scale) / zscale;
+            cy += (dy * scale) / zscale;
+            break;
+        case 4: //Scroll down
+            scale *= 1 + zoom_factor;
+            cx += dx * scale / zscale;
+            cy -= dy * scale / zscale;
+            break;
+    }
 }
 
 
@@ -156,7 +196,7 @@ void glutWidget::keyUp(unsigned char key, int, int)
  Handles user event: a special key was pressed
  */
 void glutWidget::specialKeyDown(int key, int, int) 
-{  
+{
     
 }
 
@@ -166,7 +206,23 @@ void glutWidget::specialKeyDown(int key, int, int)
  */
 void glutWidget::specialKeyUp(int key, int, int) 
 {  
+    float zscale = (1 / zoom_factor);
     
+    switch(key)
+    {
+        case GLUT_KEY_UP:
+            cy -= (0.5 * scale) / zscale;
+            break;
+        case GLUT_KEY_DOWN:
+            cy += (0.5 * scale) / zscale;
+            break;
+        case GLUT_KEY_LEFT:
+            cx += (0.5 * scale) / zscale;
+            break;
+        case GLUT_KEY_RIGHT:
+            cx -= (0.5 * scale) / zscale;
+            break;
+    }
 }
 
 

@@ -20,6 +20,7 @@ private:
     static const float zoom_factor;
     static void render();
     static void update();
+    static void mouseHandler(int button, int state, int x, int y);
     static void keyDown(unsigned char key, int, int);
     static void keyUp(unsigned char key, int, int);
     static void specialKeyDown(int key, int, int);
