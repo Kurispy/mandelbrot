@@ -96,24 +96,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named demo4.x
+# Target rules for targets named mandelbrot.x
 
 # Build rule for target.
-demo4.x: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 demo4.x
-.PHONY : demo4.x
+mandelbrot.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mandelbrot.x
+.PHONY : mandelbrot.x
 
 # fast build rule for target.
-demo4.x/fast:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/build
-.PHONY : demo4.x/fast
+mandelbrot.x/fast:
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/build
+.PHONY : mandelbrot.x/fast
 
 glutwidget.o: glutwidget.cpp.o
 .PHONY : glutwidget.o
 
 # target to build an object file
 glutwidget.cpp.o:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/glutwidget.cpp.o
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/glutwidget.cpp.o
 .PHONY : glutwidget.cpp.o
 
 glutwidget.i: glutwidget.cpp.i
@@ -121,7 +121,7 @@ glutwidget.i: glutwidget.cpp.i
 
 # target to preprocess a source file
 glutwidget.cpp.i:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/glutwidget.cpp.i
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/glutwidget.cpp.i
 .PHONY : glutwidget.cpp.i
 
 glutwidget.s: glutwidget.cpp.s
@@ -129,7 +129,7 @@ glutwidget.s: glutwidget.cpp.s
 
 # target to generate assembly for a file
 glutwidget.cpp.s:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/glutwidget.cpp.s
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/glutwidget.cpp.s
 .PHONY : glutwidget.cpp.s
 
 main.o: main.cpp.o
@@ -137,7 +137,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -145,7 +145,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -153,7 +153,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 shader_utils.o: shader_utils.cpp.o
@@ -161,7 +161,7 @@ shader_utils.o: shader_utils.cpp.o
 
 # target to build an object file
 shader_utils.cpp.o:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/shader_utils.cpp.o
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/shader_utils.cpp.o
 .PHONY : shader_utils.cpp.o
 
 shader_utils.i: shader_utils.cpp.i
@@ -169,7 +169,7 @@ shader_utils.i: shader_utils.cpp.i
 
 # target to preprocess a source file
 shader_utils.cpp.i:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/shader_utils.cpp.i
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/shader_utils.cpp.i
 .PHONY : shader_utils.cpp.i
 
 shader_utils.s: shader_utils.cpp.s
@@ -177,7 +177,7 @@ shader_utils.s: shader_utils.cpp.s
 
 # target to generate assembly for a file
 shader_utils.cpp.s:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/shader_utils.cpp.s
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/shader_utils.cpp.s
 .PHONY : shader_utils.cpp.s
 
 # Help Target
@@ -186,8 +186,8 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... demo4.x"
 	@echo "... edit_cache"
+	@echo "... mandelbrot.x"
 	@echo "... rebuild_cache"
 	@echo "... glutwidget.o"
 	@echo "... glutwidget.i"

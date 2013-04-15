@@ -46,5 +46,5 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/demo4.x.dir/DependInfo.cmake"
+  "CMakeFiles/mandelbrot.x.dir/DependInfo.cmake"
   )

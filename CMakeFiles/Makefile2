@@ -50,38 +50,38 @@ CMAKE_SOURCE_DIR = /home/chris/Desktop/ecs175/mandelbrot
 CMAKE_BINARY_DIR = /home/chris/Desktop/ecs175/mandelbrot
 
 #=============================================================================
-# Target rules for target CMakeFiles/demo4.x.dir
+# Target rules for target CMakeFiles/mandelbrot.x.dir
 
 # All Build rule for target.
-CMakeFiles/demo4.x.dir/all:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/depend
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/build
+CMakeFiles/mandelbrot.x.dir/all:
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/depend
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/chris/Desktop/ecs175/mandelbrot/CMakeFiles  1 2 3
-	@echo "Built target demo4.x"
-.PHONY : CMakeFiles/demo4.x.dir/all
+	@echo "Built target mandelbrot.x"
+.PHONY : CMakeFiles/mandelbrot.x.dir/all
 
 # Include target in all.
-all: CMakeFiles/demo4.x.dir/all
+all: CMakeFiles/mandelbrot.x.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/demo4.x.dir/rule: cmake_check_build_system
+CMakeFiles/mandelbrot.x.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chris/Desktop/ecs175/mandelbrot/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/demo4.x.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mandelbrot.x.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chris/Desktop/ecs175/mandelbrot/CMakeFiles 0
-.PHONY : CMakeFiles/demo4.x.dir/rule
+.PHONY : CMakeFiles/mandelbrot.x.dir/rule
 
 # Convenience name for target.
-demo4.x: CMakeFiles/demo4.x.dir/rule
-.PHONY : demo4.x
+mandelbrot.x: CMakeFiles/mandelbrot.x.dir/rule
+.PHONY : mandelbrot.x
 
 # clean rule for target.
-CMakeFiles/demo4.x.dir/clean:
-	$(MAKE) -f CMakeFiles/demo4.x.dir/build.make CMakeFiles/demo4.x.dir/clean
-.PHONY : CMakeFiles/demo4.x.dir/clean
+CMakeFiles/mandelbrot.x.dir/clean:
+	$(MAKE) -f CMakeFiles/mandelbrot.x.dir/build.make CMakeFiles/mandelbrot.x.dir/clean
+.PHONY : CMakeFiles/mandelbrot.x.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/demo4.x.dir/clean
+clean: CMakeFiles/mandelbrot.x.dir/clean
 .PHONY : clean
 
 #=============================================================================

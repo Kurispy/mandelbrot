@@ -6,13 +6,15 @@
 #include "glutwidget.hpp"
 #include "shader_utils.hpp"
 #include <iostream>
+#include <cmath>
 
 unsigned int glutWidget::m_frame;
 unsigned int glutWidget::m_program;               
-unsigned int glutWidget::m_fragmentsh;  
-float glutWidget::cx = 0.7, glutWidget::cy = 0.0;
+unsigned int glutWidget::m_fragmentsh;
+bool glutWidget::guide = 0;
+float glutWidget::cx = 0.5, glutWidget::cy = 0.0;
 float glutWidget::scale = 3.0;
-int glutWidget::itr = 2000;
+int glutWidget::itr = 100;
 const float glutWidget::zoom_factor = 0.1;
 
 
@@ -94,9 +96,9 @@ void glutWidget::initOpenGL()
     
     
     makeShaders();          //load data of fragment and vertex programs/shaders - compile shaders
-    glUseProgram(m_program); //Enables fragment shader
     
-    setUniform1i(m_program, "itr", itr);
+    
+    
     
     
 }
@@ -108,12 +110,39 @@ void glutWidget::initOpenGL()
 void glutWidget::render()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     //clears color and depth bits of framebuffer
+    
+    
+    if(guide)
+    {
+        glBegin(GL_LINE_LOOP);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex2f((0.9+cx)/scale, (-0.2+cy)/scale);    
+        glVertex2f((1.4+cx)/scale, (-0.2+cy)/scale);
+        glVertex2f((1.15+cx)/scale, (0.3+cy)/scale);
+        glEnd();
+        
+        glBegin(GL_LINE_LOOP);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex2f((0.1+cx)/scale, (1.6+cy)/scale);    
+        glVertex2f((0.5+cx)/scale, (1.6+cy)/scale);
+        glVertex2f((0.5+cx)/scale, (2.0+cy)/scale);
+        glVertex2f((0.1+cx)/scale, (2.0+cy)/scale);
+        glEnd();
+        
+        glBegin(GL_LINE_LOOP);
+        glColor3f(1.0, 0.0, 0.0);
+        for(int i = 0; i < 360; i++)
+        {
+            glVertex2f((cos((float) i * (3.14159265/180.0)) + cx + (-5.0)) / (3 * scale), (sin((float) i * (3.14159265/180.0)) + cy) / (3 *scale));
+        }
+        glEnd();
+    }
 
+    glUseProgram(m_program); //Enables fragment shader
     
-    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy);
+    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy); //passes parameters from main program to fragment shader
     setUniform1f(m_program, "scale", glutWidget::scale);
-    
-    
+    setUniform1i(m_program, "itr", itr);
     
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
@@ -126,8 +155,10 @@ void glutWidget::render()
     glVertex2f(-1, 1);
     glEnd();
     
+    glUseProgram(0); //Disables fragment shader
     
-   
+    
+    
     glutSwapBuffers();  //swaps front and back buffer for double buffering
 }
 
@@ -186,6 +217,7 @@ void glutWidget::keyDown(unsigned char key, int, int)
             break;
         case 'h':
             //toggle guidance
+            guide = !guide;
             break;
         case 'w':
             scale *= 1 - zoom_factor; //zoom in
