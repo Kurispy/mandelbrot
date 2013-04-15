@@ -1,5 +1,5 @@
 uniform vec2 center;
-uniform float scale;
+uniform double scale;
 uniform int itr;
 
 void main() {
@@ -19,5 +19,5 @@ void main() {
         z.y = y;
     }
 
-    gl_FragColor = vec4(0.0, (i == itr ? 0.0 : float(i)) / 25.0, (i == itr ? 0.0 : float(i)) / 25.0, 1.0);
+    gl_FragColor = vec4(0.0, (double(i == itr ? 0.0 : float(i)) + double(itr % i))/ double(itr), (double(i == itr ? 0.0 : float(i)) + double(itr % i))/ double(itr), 1.0);
 }

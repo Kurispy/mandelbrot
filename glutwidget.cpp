@@ -10,9 +10,9 @@
 unsigned int glutWidget::m_frame;
 unsigned int glutWidget::m_program;               
 unsigned int glutWidget::m_fragmentsh;  
-float glutWidget::cx = 0.7, glutWidget::cy = 0.0;
-float glutWidget::scale = 3.0;
-int glutWidget::itr = 70;
+double glutWidget::cx = 0.7, glutWidget::cy = 0.0;
+double glutWidget::scale = 3.0;
+int glutWidget::itr = 1000;
 const float glutWidget::zoom_factor = 0.1;
 
 
@@ -110,8 +110,8 @@ void glutWidget::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     //clears color and depth bits of framebuffer
 
     
-    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy);
-    setUniform1f(m_program, "scale", glutWidget::scale);
+    setUniform2d(m_program, "center", glutWidget::cx, glutWidget::cy);
+    setUniform1d(m_program, "scale", glutWidget::scale);
     
     
     
@@ -175,11 +175,25 @@ void glutWidget::mouseHandler(int button, int state, int x, int y)
  */
 void glutWidget::keyDown(unsigned char key, int, int) 
 {  
-    if(key == 'q'       //"q"
-    || (int)key == 27) //escape key
-    { 
-        stop(); //quit the main loop, exit program
-    } 
+    switch(key)
+    {
+        case 'q':
+        case 27:
+            stop(); //quit the main loop, exit program
+            break;
+        case 'c':
+            //change color scheme
+            break;
+        case 'h':
+            //toggle guidance
+            break;
+        case 'w':
+            scale *= 1 - zoom_factor; //zoom in
+            break;
+        case 's':
+            scale *= 1 + zoom_factor; //zoom out
+            break;
+    }
 }
 
 
@@ -280,8 +294,8 @@ void glutWidget::update()
 {
     m_frame++;
     glutPostRedisplay(); //marks window for redrawing
-    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy);
-    setUniform1f(m_program, "scale", glutWidget::scale);
+    setUniform2d(m_program, "center", glutWidget::cx, glutWidget::cy);
+    setUniform1d(m_program, "scale", glutWidget::scale);
 }
 
 

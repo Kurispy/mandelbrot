@@ -52,13 +52,13 @@ void setUniform1i(unsigned int m_program, const char *name, int value)
 }
 
 
-void setUniform1f(unsigned int m_program, const char *name, float value)
+void setUniform1d(unsigned int m_program, const char *name, double value)
 {
-    glUniform1f(glGetUniformLocation(m_program, name), value);
+    glUniform1d(glGetUniformLocation(m_program, name), value);
 }
 
 
-void setUniform2f(unsigned int m_program, const char *name, float value1, float value2)
+void setUniform2d(unsigned int m_program, const char *name, double value1, double value2)
 {
-    glUniform2f(glGetUniformLocation(m_program, name), value1, value2);
+    glUniform2d(glGetUniformLocation(m_program, name), value1, value2);
 }

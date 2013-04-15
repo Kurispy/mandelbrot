@@ -14,8 +14,8 @@ private:
     static unsigned int m_frame;
     static const unsigned int m_width = 500;
     static const unsigned int m_height = 500;
-    static float cx, cy;
-    static float scale;
+    static double cx, cy;
+    static double scale;
     static int itr;
     static const float zoom_factor;
     static void render();
