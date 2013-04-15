@@ -9,10 +9,11 @@ void main() {
     c.y = (gl_TexCoord[0].y - 0.5) * scale - center.y;
 
     int i;
+    float x, y;
     z = c;
     for(i=0; i<itr; i++) {
-        float x = (z.x * z.x - z.y * z.y) + c.x;
-        float y = (z.y * z.x + z.x * z.y) + c.y;
+        x = (z.x * z.x - z.y * z.y) + c.x;
+        y = 2 * z.y * z.x + c.y;
 
         if((x * x + y * y) > 4.0) break;
         z.x = x;
