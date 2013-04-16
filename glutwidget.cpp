@@ -116,17 +116,17 @@ void glutWidget::render()
     {
         glBegin(GL_LINE_LOOP);
         glColor3f(1.0, 0.0, 0.0);
-        glVertex2f((0.9+cx)/scale, (-0.2+cy)/scale);    
-        glVertex2f((1.4+cx)/scale, (-0.2+cy)/scale);
-        glVertex2f((1.15+cx)/scale, (0.3+cy)/scale);
+        glVertex2f((0.2+cx)/(scale*0.5), (-0.1+cy)/(scale*0.5));    
+        glVertex2f((0.45+cx)/(scale*0.5), (-0.1+cy)/(scale*0.5));
+        glVertex2f((0.325+cx)/(scale*0.5), (0.15+cy)/(scale*0.5));
         glEnd();
         
         glBegin(GL_LINE_LOOP);
         glColor3f(1.0, 0.0, 0.0);
-        glVertex2f((0.1+cx)/scale, (1.6+cy)/scale);    
-        glVertex2f((0.5+cx)/scale, (1.6+cy)/scale);
-        glVertex2f((0.5+cx)/scale, (2.0+cy)/scale);
-        glVertex2f((0.1+cx)/scale, (2.0+cy)/scale);
+        glVertex2f((-0.2+cx)/(scale*0.5), (0.8+cy)/(scale*0.5));    
+        glVertex2f((0.0+cx)/(scale*0.5), (0.8+cy)/(scale*0.5));
+        glVertex2f((0.0+cx)/(scale*0.5), (1.0+cy)/(scale*0.5));
+        glVertex2f((-0.2+cx)/(scale*0.5), (1.0+cy)/(scale*0.5));
         glEnd();
         
         //Circle
@@ -134,7 +134,7 @@ void glutWidget::render()
         glColor3f(1.0, 0.0, 0.0);
         for(int i = 0; i < 360; i++)
         {
-            glVertex2f((cos((float) i * (3.14159265/180.0)) + cx + (-5.0)) / (3 * scale), (sin((float) i * (3.14159265/180.0)) + cy) / (3 *scale));
+            glVertex2f((cos((float) i * (3.14159265/180.0)) / 6 + cx + (-1.35)) / (scale*0.5), (sin((float) i * (3.14159265/180.0)) / 6 + cy) / (scale*0.5));
         }
         glEnd();
     }
