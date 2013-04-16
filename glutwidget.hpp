@@ -15,6 +15,7 @@ private:
     static const unsigned int m_width = 500;
     static const unsigned int m_height = 500;
     static bool guide;
+    static int color;
     static float cx, cy;
     static float scale;
     static int itr;

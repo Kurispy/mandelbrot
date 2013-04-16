@@ -7,14 +7,17 @@
 #include "shader_utils.hpp"
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 unsigned int glutWidget::m_frame;
 unsigned int glutWidget::m_program;               
 unsigned int glutWidget::m_fragmentsh;
 bool glutWidget::guide = 0;
+int glutWidget::color = 1;
 float glutWidget::cx = 0.5, glutWidget::cy = 0.0;
 float glutWidget::scale = 3.0;
-int glutWidget::itr = 100;
+int glutWidget::itr = 300;
 const float glutWidget::zoom_factor = 0.1;
 
 
@@ -23,6 +26,7 @@ const float glutWidget::zoom_factor = 0.1;
  */
 glutWidget::glutWidget(int argc, char** argv)
 {
+    
     m_frame = 0;
     glutInitWindowSize(glutWidget::m_width, glutWidget::m_height);
     glutInit(&argc,argv);
@@ -97,10 +101,9 @@ void glutWidget::initOpenGL()
     
     makeShaders();          //load data of fragment and vertex programs/shaders - compile shaders
     
+    srand(time(NULL));
     
-    
-    
-    
+    color = rand() % 100 + 1;
 }
 
 
@@ -143,6 +146,7 @@ void glutWidget::render()
     setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy); //passes parameters from main program to fragment shader
     setUniform1f(m_program, "scale", glutWidget::scale);
     setUniform1i(m_program, "itr", itr);
+    setUniform1i(m_program, "color", color);
     
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
@@ -214,6 +218,7 @@ void glutWidget::keyDown(unsigned char key, int, int)
             break;
         case 'c':
             //change color scheme
+            color = rand() % 100 + 1;
             break;
         case 'h':
             //toggle guidance
