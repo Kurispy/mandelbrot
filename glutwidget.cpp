@@ -37,9 +37,6 @@ glutWidget::glutWidget(int argc, char** argv)
     glutKeyboardUpFunc(keyUp);       //what to call when user releases a key
     glutSpecialFunc(specialKeyDown); //what to call when user presses a special key
     glutSpecialFunc(specialKeyUp);   //what to call when user releases a special key
-    
-    //may need to use glutOverlayDisplayFunc() here
-    
     glutDisplayFunc(render);         //what to call when window needs redrawing
     glutIdleFunc(update);            //what to call when no user input given
     initOpenGL();
@@ -132,6 +129,7 @@ void glutWidget::render()
         glVertex2f((0.1+cx)/scale, (2.0+cy)/scale);
         glEnd();
         
+        //Circle
         glBegin(GL_LINE_LOOP);
         glColor3f(1.0, 0.0, 0.0);
         for(int i = 0; i < 360; i++)
@@ -143,7 +141,8 @@ void glutWidget::render()
 
     glUseProgram(m_program); //Enables fragment shader
     
-    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy); //passes parameters from main program to fragment shader
+    //Pass parameters from main program to fragment shader
+    setUniform2f(m_program, "center", glutWidget::cx, glutWidget::cy); 
     setUniform1f(m_program, "scale", glutWidget::scale);
     setUniform1i(m_program, "itr", itr);
     setUniform1i(m_program, "color", color);

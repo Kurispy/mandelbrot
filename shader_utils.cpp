@@ -43,8 +43,9 @@ void printInfoLog(unsigned int obj)
         std::cout <<  infoLog << std::endl;
 		delete[] infoLog;
 	}
-} 
+}
 
+//Functions for communication between the main program and the shaders
 
 void setUniform1i(unsigned int m_program, const char *name, int value)
 {
