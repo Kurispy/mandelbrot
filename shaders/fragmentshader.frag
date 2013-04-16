@@ -5,6 +5,7 @@ uniform int itr, color;
 void main() 
 {
     vec2 z, c;
+    int r = color % 3, g = color % 5, b = color % 7;
 
     c.x = (gl_TexCoord[0].x - 0.5) * scale - center.x;
     c.y = (gl_TexCoord[0].y - 0.5) * scale - center.y;
@@ -23,5 +24,5 @@ void main()
         z.y = y;
     }
 
-    gl_FragColor = vec4(i == itr ? 0.0 : pow((i + color) / float(itr), float(color % 3)), i == itr ? 0.0 : pow((i + color) / float(itr), float(color % 5)), i == itr ? 0.0 : pow((i + color) / float(itr), float(color % 7)), 1.0);
+    gl_FragColor = vec4(i == itr ? 0.0 : pow((i + color) / float(itr), float(r)), i == itr ? 0.0 : pow((i + color) / float(itr), float(g)), i == itr ? 0.0 : pow((i + color) / float(itr), float(b)), 1.0);
 }
