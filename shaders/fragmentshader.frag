@@ -15,7 +15,7 @@ void main()
     for(i = 0; i < itr; i++) 
     {
         x = (z.x * z.x - z.y * z.y) + c.x;
-        y = 2 * z.y * z.x + c.y;
+        y = 2.0 * z.y * z.x + c.y;
 
         if((x * x + y * y) > 4.0) 
             break;
@@ -23,5 +23,5 @@ void main()
         z.y = y;
     }
 
-    gl_FragColor = vec4(i == itr ? 0.0 : pow((i + color) / float(itr), color % 3), i == itr ? 0.0 : pow((i + color) / float(itr), color % 5), i == itr ? 0.0 : pow((i + color) / float(itr), color % 7), 1.0);
+    gl_FragColor = vec4(i == itr ? 0.0 : pow((i + color) / float(itr), float(color % 3)), i == itr ? 0.0 : pow((i + color) / float(itr), float(color % 5)), i == itr ? 0.0 : pow((i + color) / float(itr), float(color % 7)), 1.0);
 }

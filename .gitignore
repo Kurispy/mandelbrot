@@ -12,8 +12,18 @@
 *.la
 *.a
 
+#Executables
+*.out
+*.x
+
 # Netbeans
 nbproject
 
 # Temp Files
 *~
+
+#cmake
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+
